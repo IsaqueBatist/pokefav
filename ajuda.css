@@ -13,4 +13,9 @@ img{
   width: 100pox;
   font-weight: bold;
   text-align: center;
+  color: #c8c8c8;
+}
+
+input:focus{
+  outline: none;
 }

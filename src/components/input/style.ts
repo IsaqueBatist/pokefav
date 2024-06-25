@@ -4,7 +4,7 @@ export const InputContainer = styled.div`
   width: 100%;  
   max-width: 27.5rem;
   heigh: 3rem;
-  row-gap: 1rem;
+  row-gap: .5rem;
   
   color:white;
   display: flex;
@@ -14,6 +14,7 @@ export const InputContainer = styled.div`
 
   label {
   font-size: 1.5rem;
+  font-weight: 500;
   }
 `
 export const InputText = styled.input`
@@ -24,4 +25,10 @@ export const InputText = styled.input`
   height: 30px;
   border: 1px solid black;
   border-radius: 1rem;
+  color: black;
+  padding: .5rem;
+
+  &:focus{
+    outline: none;
+  }
 `
