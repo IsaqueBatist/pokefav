@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const InputContainer = styled.div`
-  width: 100%;  
+  width: 50rem;  
   max-width: 27.5rem;
   heigh: 3rem;
   row-gap: .5rem;
@@ -31,4 +31,10 @@ export const InputText = styled.input`
   &:focus{
     outline: none;
   }
+`
+
+export const ErrorText = styled.div`
+  color: #FF0000;
+  font-size: 1.2rem;
+  margin: 0;
 `
