@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "nome": "admin",
+      "email": "admin@gmail.com",
+      "senha": "123456"
+    },
+    {
+      "id": 2,
+      "nome": "IsaqueBatista",
+      "email": "isaquebatista400@gmail.com",
+      "senha": "senha123"
+    },
+    {
+      "id": 3,
+      "nome": "IsaqueBatista",
+      "email": "isaquebatista@gmai.com",
+      "senha": "123456"
+    }
+  ]
+}

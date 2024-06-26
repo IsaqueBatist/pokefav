@@ -13,7 +13,7 @@ const Input = ({ label, id, placeholder, type, required, name, control, errorMes
           render={({ field: { onChange, onBlur, value, ref } }) => (
             <>
               {label ? <label htmlFor={id}>{label}{required? " *" : null}</label> : null}
-              <InputText {...rest} onChange={onChange} onBlur={onBlur} value={value} ref={ref} />
+              <InputText {...rest} onChange={onChange} onBlur={onBlur} value={value} ref={ref} type={type} />
             </>
           )}
         />
