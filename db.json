@@ -13,9 +13,15 @@
       "senha": "senha123"
     },
     {
+      "id": 2,
+      "nome": "Isaq3d",
+      "email": "is2asqe@gmail.co",
+      "senha": "123456"
+    },
+    {
       "id": 3,
-      "nome": "IsaqueBatista",
-      "email": "isaquebatista@gmai.com",
+      "nome": "izakws",
+      "email": "izakes@gmail.com",
       "senha": "123456"
     }
   ]
