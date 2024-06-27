@@ -6,6 +6,7 @@ import {
 } from "react-router-dom"
 import Login from './pages/login/index.tsx';
 import Cadastro from './pages/cadastro/index.tsx';
+import HomePage from './pages/home/index.tsx';
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Login />} />
         <Route path='/cadastro' element={<Cadastro/>} />
+        <Route path='/home' element= {<HomePage/>} />
       </Routes>
     </Router>
   );

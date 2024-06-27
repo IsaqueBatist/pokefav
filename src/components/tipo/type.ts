@@ -1,0 +1,3 @@
+interface ContainerTypeProps{
+  tipo: string
+}

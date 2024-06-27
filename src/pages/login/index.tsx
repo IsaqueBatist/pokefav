@@ -44,7 +44,7 @@ const Login = () => {
       const { data } = await db.get(`/users?email=${loginData.email}&senha=${loginData.senha}`)
       if (data.length === 1) {
         setUser(data[0])
-        navigate('/cadastro')
+        navigate('/home')
         window.alert("Usuário Logado com Sucesso")
       }else {
         window.alert("Usuário não encontrado")
