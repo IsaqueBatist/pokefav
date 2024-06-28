@@ -46,3 +46,17 @@ export const TitleContainer = styled.div`
     font-size: 4.4rem;
   }
 `
+export const Footer = styled.div`
+  width:100%;
+  display: flex;
+  justify-content: flex-end;
+  color: white;
+  a{
+    margin-right:1rem;  
+    font-size: 1.5rem;
+    font-weight: 700;
+    &:visited{
+      color: white;
+    }
+  }
+`

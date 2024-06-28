@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Input from "../../components/input/index.tsx";
 import Button from "../../components/button/index.tsx";
-import { Container, LoginContainer, TitleContainer, Row, FormContainer } from "./style.ts";
+import { Container, LoginContainer, TitleContainer, Row, FormContainer, Footer } from "./style.ts";
 import { api, db } from "../../services/api.ts";
 import { IAPI } from "../../type.ts";
 import { useForm } from "react-hook-form";
@@ -76,6 +76,11 @@ const Cadastro = () => {
               <Button title={'Cadastrar'} disabled={!isValid} />
             </form>
           </FormContainer>
+        </Row>
+        <Row>
+          <Footer>
+            <a href="/">Logar</a>
+          </Footer>
         </Row>
       </LoginContainer>
     </Container>

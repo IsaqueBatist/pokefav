@@ -9,30 +9,6 @@ export const HeaderContainer = styled.div`
   height: 6rem;
   background-color: black;
 `
-
-export const ImageContainer = styled.div`
-  width: 5rem;
-  justify-self: flex-end;
-  height: 5rem;
-  border-radius: 50%;
-  img {
-    border-radius: 50%;
-  }
-`
-
-export const UserInfo = styled.div`
-  justify-self: flex-end;
-  display:flex;
-  flex-direction: row;
-  color:white;
-  align-items: center;
-  margin-right: 1rem;
-  align-self: center;
-  p{
-    margin-left: .5rem;
-    font-size: 1.4rem;
-  }
-`
 export const NavbarContainer = styled.div`
   display: flex;
   color:white;

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Header from "../../components/navbar/index.tsx";
+import Header from "../../components/Header/index.tsx";
 import { PokemonCardContainer, PokemonsContainer, PokemonImageContainer, PokeName, PokeTypeandStart, PokemonDetails, PokemonItem, ButtonContainer } from "./style.ts";
 import Type from "../../components/tipo/index.tsx";
 import { api } from "../../services/api.ts";
@@ -8,20 +8,22 @@ import { stat } from "fs";
 import {
   bug, dark, dragon, electric, fairy, fighting, fire, flying, ground, ghost, grass, ice, normal, poison, psychic, rock, steel, water,
 } from "../../imagens.ts"
-import Button from "../../components/button/index.tsx";
+import { IUser } from "../login/type.ts";
+import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
   const [pokemons, setPokemons] = useState<IAPI[]>([])
   const [pokemonsDetails, setPokemonsDetails] = useState<any[]>([])
+  const [user, setUser] = useState<IUser>({} as IUser)
   const [offset, setOffset] = useState<number>(0)
 
-
+  const navigate = useNavigate()
   const loadPokemons = async (offset: number = 0) => {
     try {
       const { data }: IData = await api.get(`/api/v2/pokemon?offset=${offset}&limit=20`)
       setPokemons(data.results)
       await loadPokemonsDetails(data.results)
-      setOffset(offset+=20)
+      setOffset(offset += 20)
     } catch (error) {
       console.error(error);
     }
@@ -51,7 +53,7 @@ const HomePage = () => {
   }, [])
   return (
     <>
-      <Header />
+      <Header/> 
       <PokemonsContainer>
         {
           pokemonsDetails.map((element) => {
@@ -105,9 +107,9 @@ const HomePage = () => {
             return (
 
               <PokemonCardContainer>
-                  <PokeName>
-                    <p>{element.name} <span>{base_stat}</span></p>
-                  </PokeName>
+                <PokeName>
+                  <p>{element.name} <span>{base_stat}</span></p>
+                </PokeName>
                 <PokemonImageContainer tipo={types[0]} image={pokemonImage}>
                   <PokeTypeandStart>
                     <img src={getTypeImagem(types[0])} alt="type" width={50} />

@@ -19,8 +19,8 @@ export const PokemonCardContainer = styled.div`
   background-color:white;
   border-radius: 1.5rem;
   margin: 1rem 0 1rem 1rem;
-  width:30rem;
-  height: 43rem;
+  width:25rem;
+  height: 30rem;
   overflow: hidden;
   border: .1rem solid black;
 `
@@ -46,6 +46,8 @@ export const PokeName = styled.div`
   width: 100%;
   height:3rem;
   background-color: white;
+  align-items: center;
+  justify-content: flex-start;
   p{
     font-size: 2rem;
     margin: 1rem 0 0 1rem;
@@ -70,7 +72,7 @@ export const PokemonDetails = styled.div`
   row-gap: 1rem;
   background-color: white;
   width:100%;
-  height: 30%;
+  height: 100%;
 `
 
 export const PokemonItem = styled.div`
@@ -98,8 +100,8 @@ export const ButtonContainer = styled.div`
   justify-content: center;
   button{
     padding: 2rem;
-    width: 60rem;
-    border-radius: 1rem;
+    width: 30rem;
+    border-radius: 2rem;
     color: white;
     font-size: 2rem;
     background-color: black;

@@ -8,7 +8,7 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 //Componentes
-import { Container, LoginContainer, TitleContainer, Row, FormContainer } from "./style.ts";
+import { Container, LoginContainer, TitleContainer, Row, FormContainer, Footer } from "./style.ts";
 import Input from "../../components/input/index.tsx";
 import Button from "../../components/button/index.tsx";
 //Tipos
@@ -23,7 +23,6 @@ const schema = yup.object({
 const Login = () => {
 
   const [image, setImage] = useState("")
-  const [user, setUser] = useState<IUser>({} as IUser)
   const [pokemonName, setPokemonName] = useState<string>("")
 
   const navigate = useNavigate()
@@ -43,10 +42,10 @@ const Login = () => {
     try {
       const { data } = await db.get(`/users?email=${loginData.email}&senha=${loginData.senha}`)
       if (data.length === 1) {
-        setUser(data[0])
+        localStorage.setItem('userInfo', JSON.stringify(data[0]))
         navigate('/home')
         window.alert("Usuário Logado com Sucesso")
-      }else {
+      } else {
         window.alert("Usuário não encontrado")
       }
     } catch (error) {
@@ -76,6 +75,11 @@ const Login = () => {
               <Button title={'Login'} disabled={!isValid} type="submit" />
             </form>
           </FormContainer>
+        </Row>
+        <Row>
+          <Footer>
+            <a href="/cadastro">Cadastrar</a>
+          </Footer>
         </Row>
       </LoginContainer>
     </Container>
