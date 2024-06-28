@@ -1,25 +1,27 @@
 import React, { useEffect, useState } from "react";
 import Header from "../../components/navbar/index.tsx";
-import { PokemonCardContainer, PokemonsContainer, PokemonImageContainer, PokeName, PokeTypeandStart, PokemonDetails, PokemonItem } from "./style.ts";
+import { PokemonCardContainer, PokemonsContainer, PokemonImageContainer, PokeName, PokeTypeandStart, PokemonDetails, PokemonItem, ButtonContainer } from "./style.ts";
 import Type from "../../components/tipo/index.tsx";
 import { api } from "../../services/api.ts";
 import { IAPI, IData, IHead } from "../../type.ts";
 import { stat } from "fs";
 import {
-  bug, dark, dragon, eletric, fairy, fighting, fire, flying, ground, ghost, grass, ice, normal, poison, psychic, rock, steel, water,
+  bug, dark, dragon, electric, fairy, fighting, fire, flying, ground, ghost, grass, ice, normal, poison, psychic, rock, steel, water,
 } from "../../imagens.ts"
+import Button from "../../components/button/index.tsx";
 
 const HomePage = () => {
   const [pokemons, setPokemons] = useState<IAPI[]>([])
   const [pokemonsDetails, setPokemonsDetails] = useState<any[]>([])
+  const [offset, setOffset] = useState<number>(0)
 
 
   const loadPokemons = async (offset: number = 0) => {
     try {
       const { data }: IData = await api.get(`/api/v2/pokemon?offset=${offset}&limit=20`)
       setPokemons(data.results)
-
       await loadPokemonsDetails(data.results)
+      setOffset(offset+=20)
     } catch (error) {
       console.error(error);
     }
@@ -41,6 +43,9 @@ const HomePage = () => {
       console.error(error)
     }
   }
+  const loadMorePokemons = () => {
+    loadPokemons(offset)
+  }
   useEffect(() => {
     loadPokemons()
   }, [])
@@ -56,6 +61,7 @@ const HomePage = () => {
               name: stat.stat.name,
               stats: stat.base_stat
             }))
+            const pokemonImage = element.sprites.other.dream_world.front_default ? element.sprites.other.dream_world.front_default : element.sprites.other["official-artwork"].front_default
             const getTypeImagem = (firstType: string) => {
               switch (firstType) {
                 case 'grass':
@@ -67,16 +73,16 @@ const HomePage = () => {
                 case 'water':
                   return water
                 case 'electric':
-                  return eletric
+                  return electric
                 case 'ice':
                   return ice
                 case 'fighting':
                   return fighting
                 case 'ground':
                   return ground
-                case 'flying ':
+                case 'flying':
                   return flying
-                case 'psychic ':
+                case 'psychic':
                   return psychic
                 case 'bug':
                   return bug
@@ -99,14 +105,13 @@ const HomePage = () => {
             return (
 
               <PokemonCardContainer>
-                <PokemonImageContainer tipo={types[0]}>
                   <PokeName>
                     <p>{element.name} <span>{base_stat}</span></p>
                   </PokeName>
+                <PokemonImageContainer tipo={types[0]} image={pokemonImage}>
                   <PokeTypeandStart>
                     <img src={getTypeImagem(types[0])} alt="type" width={50} />
                   </PokeTypeandStart>
-                  <img src={element.sprites.other.dream_world.front_default ? element.sprites.other.dream_world.front_default : element.sprites.other["official-artwork"].front_default} alt="pokemon" width={170} />
                 </PokemonImageContainer>
                 <PokemonDetails>
                   <PokemonItem>
@@ -127,6 +132,11 @@ const HomePage = () => {
           })
         }
       </PokemonsContainer>
+      <ButtonContainer>
+        <button onClick={loadMorePokemons}>
+          Carregar mais
+        </button>
+      </ButtonContainer>
     </>
   )
 }

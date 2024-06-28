@@ -5,10 +5,10 @@ body{
   background-color: black;
   align-items: center;
   justify-content: space-between;
+  background-size: cover;
     div{
       justify-self: flex-end;
-      background-image: url("../../assets/freren.png");
-      background-size: cover;
+      background: black url('');
       align-items: center;
       font-weight: 500;
       overflow: hidden;

@@ -1,7 +1,7 @@
 import bug from "./assets/images/poketypes/Bug.png"
 import dark from "./assets/images/poketypes/dark.png"
 import dragon from "./assets/images/poketypes/dragon.png"
-import eletric from "./assets/images/poketypes/eletric.png"
+import electric from "./assets/images/poketypes/eletric.png"
 import fairy from "./assets/images/poketypes/Fairy.png"
 import fighting from "./assets/images/poketypes/Fighting.png"
 import fire from "./assets/images/poketypes/fire.png"
@@ -22,7 +22,7 @@ export {
   bug,
   dark,
   dragon,
-  eletric,
+  electric,
   fairy,
   fighting,
   fire,

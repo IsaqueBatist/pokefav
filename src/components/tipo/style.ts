@@ -19,9 +19,9 @@ export const getColor = (tipo:string) => {
       return '#E0306A'
     case 'ground':
       return '#E87236'
-    case 'flying ':
+    case 'flying':
       return '#8FA8DD'
-    case 'psychic ':
+    case 'psychic':
       return '#FF6675'
     case 'bug':
       return '#90C12C'

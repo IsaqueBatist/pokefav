@@ -6,9 +6,10 @@ import { ContainerTypeProps } from "../../components/tipo/type.ts";
 export const PokemonsContainer = styled.div`
   display: flex;
   flex-drection: row;
+  justify-content: center;
   flex-wrap: wrap;
   margin-top: 10rem;
-  background-color: red;
+  background-color: #ffffff;
   width: 100%
   height: 100%;
 `
@@ -17,7 +18,7 @@ export const PokemonCardContainer = styled.div`
   flex-direction: column;
   background-color:white;
   border-radius: 1.5rem;
-  margin-left: 1rem;
+  margin: 1rem 0 1rem 1rem;
   width:30rem;
   height: 43rem;
   overflow: hidden;
@@ -27,10 +28,14 @@ export const PokemonCardContainer = styled.div`
 export const PokemonImageContainer = styled.div<ContainerTypeProps>`
   display:flex;
   flex-direction: column;
+  background-color: ${({tipo}) => getColor(tipo)};
   align-items: center;
   width: 100%;
-  height: 65%;
-  background-color: ${({tipo}) => getColor(tipo)};
+  height: 70%;
+  background-image: url("${({image}) => image}");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
   img{
   margin: .1rem;
   }
@@ -65,7 +70,7 @@ export const PokemonDetails = styled.div`
   row-gap: 1rem;
   background-color: white;
   width:100%;
-  height: 100%;
+  height: 30%;
 `
 
 export const PokemonItem = styled.div`
@@ -85,4 +90,24 @@ export const PokemonItem = styled.div`
     margin-left: 2rem;
   }
   
+`
+export const ButtonContainer = styled.div`
+  display: flex;
+  width: 100%;
+  margin-top: 1rem;
+  justify-content: center;
+  button{
+    padding: 2rem;
+    width: 60rem;
+    border-radius: 1rem;
+    color: white;
+    font-size: 2rem;
+    background-color: black;
+    font-weight: 700;
+
+    &:hover{
+      cursor: pointer;
+      background-color: #00000090
+    }
+  }
 `
