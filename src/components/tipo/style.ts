@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ContainerTypeProps } from "./type";
 
 export const getColor = (tipo:string) => {
   switch(tipo){

@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { getColor } from "../../components/tipo/style.ts";
+import { ContainerTypeProps } from "../../components/tipo/type.ts";
+
 
 export const PokemonsContainer = styled.div`
   display: flex;

@@ -1,3 +1,3 @@
-interface ContainerTypeProps{
+export interface ContainerTypeProps{
   tipo: string
 }
