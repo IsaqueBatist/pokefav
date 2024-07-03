@@ -63,7 +63,7 @@ export const PokeTypeandStart = styled.div`
   width:100%;
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: space-between;
 `
 export const PokemonDetails = styled.div`
   display: flex;

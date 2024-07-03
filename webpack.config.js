@@ -10,7 +10,8 @@ module.exports = {
   },
   resolve: {
     fallback: {
-      console: require.resolve('console-browserify')
+      console: require.resolve('console-browserify'),
+      os: require.resolve("os-browserify/browser")
     },
     extensions: ['.js', '.jsx', '.ts', '.tsx'] // Extensões de arquivos que o webpack deve resolver
   },

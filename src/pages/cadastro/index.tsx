@@ -41,12 +41,13 @@ const Cadastro = () => {
       const response = await db.get('/users')
       const users: IUser[] = response.data
       const { id } = users[users.length - 1]
-      const maxid: number = id
+      const maxid: number = Number(id)
       const newUser: IUser = {
         id: maxid + 1,
         nome: registerData.nome,
         email: registerData.email,
         senha: registerData.senha,
+        favpokemons: []
       }
       await db.post('/users', newUser)
       navigte("/")

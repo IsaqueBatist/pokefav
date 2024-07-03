@@ -1,23 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Header from "../../components/Header/index.tsx";
 import { PokemonCardContainer, PokemonsContainer, PokemonImageContainer, PokeName, PokeTypeandStart, PokemonDetails, PokemonItem, ButtonContainer } from "./style.ts";
 import Type from "../../components/tipo/index.tsx";
-import { api } from "../../services/api.ts";
+import { api, db } from "../../services/api.ts";
 import { IAPI, IData, IHead } from "../../type.ts";
 import { stat } from "fs";
 import {
   bug, dark, dragon, electric, fairy, fighting, fire, flying, ground, ghost, grass, ice, normal, poison, psychic, rock, steel, water,
 } from "../../imagens.ts"
 import { IUser } from "../login/type.ts";
-import { useNavigate } from "react-router-dom";
+import { userInfo } from "os";
+
 
 const HomePage = () => {
   const [pokemons, setPokemons] = useState<IAPI[]>([])
+  const [favPokemons, setFavPokemons] = useState<any[]>([])
   const [pokemonsDetails, setPokemonsDetails] = useState<any[]>([])
-  const [user, setUser] = useState<IUser>({} as IUser)
   const [offset, setOffset] = useState<number>(0)
+  const [user, setUser] = useState<IUser>({} as IUser)
 
-  const navigate = useNavigate()
+
   const loadPokemons = async (offset: number = 0) => {
     try {
       const { data }: IData = await api.get(`/api/v2/pokemon?offset=${offset}&limit=20`)
@@ -48,12 +50,52 @@ const HomePage = () => {
   const loadMorePokemons = () => {
     loadPokemons(offset)
   }
+  const getfavPokemons = useCallback(async (pokemon, checked: boolean) => {
+    if (checked) {
+      setFavPokemons(prevFav => [...prevFav, pokemon.name])
+      await db.put(`/users/${user.id}`, {
+        ...user,
+        favpokemons: [...favPokemons, pokemon.name]
+      })
+    } else {
+      setFavPokemons(prevFav => prevFav.filter(fav => fav !== pokemon.name))
+      await db.put(`/users/${user.id}`, {
+        ...user,
+        favpokemons: favPokemons.filter(fav => fav !== pokemon.name)
+      })
+    }
+    setUser({
+      ...user,
+      favpokemons: [...favPokemons, pokemon.name]
+    })
+    localStorage.setItem('userInfo', JSON.stringify({
+      ...user,
+      favpokemons: [...favPokemons, pokemon.name]
+    }))
+  }, [favPokemons, user])
+
+
+
   useEffect(() => {
+  const getDATA = async () => {
+    const userInfo: string = localStorage.getItem('userInfo')
+      try {
+        const data: IUser = await JSON.parse(userInfo)
+        setUser(data)
+      } catch (error) {
+        console.error(error)
+      }
+  }
+    getDATA()
     loadPokemons()
   }, [])
+  useEffect(() => {
+    console.log(`User setado na inicialização:`)
+    console.log(user)
+  }, [user])
   return (
     <>
-      <Header/> 
+      <Header />
       <PokemonsContainer>
         {
           pokemonsDetails.map((element) => {
@@ -104,14 +146,19 @@ const HomePage = () => {
                   return normal
               }
             }
+
             return (
 
-              <PokemonCardContainer>
+              <PokemonCardContainer key={element.name}>
                 <PokeName>
                   <p>{element.name} <span>{base_stat}</span></p>
                 </PokeName>
                 <PokemonImageContainer tipo={types[0]} image={pokemonImage}>
                   <PokeTypeandStart>
+                    <input type="checkbox" onChange={(e) => getfavPokemons(element, e.target.checked)}
+                      checked={user.favpokemons?.some(fav => fav === element.name)}
+                    />
+
                     <img src={getTypeImagem(types[0])} alt="type" width={50} />
                   </PokeTypeandStart>
                 </PokemonImageContainer>
@@ -119,11 +166,11 @@ const HomePage = () => {
                   <PokemonItem>
                     <p>Tipo:</p>
                     <div>
-                      {types.map(type => <Type tipo={type} />)}
+                      {types.map(type => <Type key={type} tipo={type} />)}
                     </div>
                   </PokemonItem>
                   {stats.map(status =>
-                    <PokemonItem>
+                    <PokemonItem key={status.name}>
                       <p>{status.name}:</p>
                       <p className="segundoItem">{status.stats}</p>
                     </PokemonItem>
