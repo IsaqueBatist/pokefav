@@ -6,7 +6,40 @@
       "email": "admin@gmail.com",
       "senha": "123456",
       "favpokemons": [
+        "ivysaur",
+        "charmander",
+        "charmeleon",
+        "charizard",
+        "squirtle",
+        "wartortle"
+      ]
+    },
+    {
+      "id": "2",
+      "nome": "isaque",
+      "email": "isaque@gmail.com",
+      "senha": "123456",
+      "favpokemons": [
+        "ivysaur",
+        "caterpie",
+        "bulbasaur",
+        "venusaur",
         "charmander"
+      ]
+    },
+    {
+      "id": "3",
+      "nome": "Biatris",
+      "email": "bia@gmail.com",
+      "senha": "123456",
+      "favpokemons": [
+        "ivysaur",
+        "venusaur",
+        "sandshrew",
+        "charmander",
+        "charmeleon",
+        "blastoise",
+        "wartortle"
       ]
     }
   ]

@@ -9,9 +9,9 @@ export interface ILoginData {
 }
 
 export interface IUser{
-  id: number
+  id: string
   nome: string
   email: string
   senha: string
-  favpokemons?: []
+  favpokemons?: string[]
 }

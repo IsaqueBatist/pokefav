@@ -14,10 +14,10 @@ import { userInfo } from "os";
 
 const HomePage = () => {
   const [pokemons, setPokemons] = useState<IAPI[]>([])
-  const [favPokemons, setFavPokemons] = useState<any[]>([])
   const [pokemonsDetails, setPokemonsDetails] = useState<any[]>([])
   const [offset, setOffset] = useState<number>(0)
   const [user, setUser] = useState<IUser>({} as IUser)
+  const [favPokemons, setFavPokemons] = useState<string[]>([])
 
 
   const loadPokemons = async (offset: number = 0) => {
@@ -53,6 +53,7 @@ const HomePage = () => {
   const getfavPokemons = useCallback(async (pokemon, checked: boolean) => {
     if (checked) {
       setFavPokemons(prevFav => [...prevFav, pokemon.name])
+
       await db.put(`/users/${user.id}`, {
         ...user,
         favpokemons: [...favPokemons, pokemon.name]
@@ -77,15 +78,18 @@ const HomePage = () => {
 
 
   useEffect(() => {
-  const getDATA = async () => {
-    const userInfo: string = localStorage.getItem('userInfo')
-      try {
-        const data: IUser = await JSON.parse(userInfo)
-        setUser(data)
-      } catch (error) {
-        console.error(error)
+    const getDATA = async () => {
+      const userInfo = localStorage.getItem('userInfo')
+      if(userInfo){
+        try {
+          const data: IUser = JSON.parse(userInfo)
+          setUser(data)
+          setFavPokemons(data.favpokemons || [])
+        } catch (error) {
+          console.error(error)
+        }
       }
-  }
+    }
     getDATA()
     loadPokemons()
   }, [])

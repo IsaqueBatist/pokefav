@@ -42,8 +42,9 @@ const Cadastro = () => {
       const users: IUser[] = response.data
       const { id } = users[users.length - 1]
       const maxid: number = Number(id)
+      const newID = maxid + 1
       const newUser: IUser = {
-        id: maxid + 1,
+        id: newID.toString(),
         nome: registerData.nome,
         email: registerData.email,
         senha: registerData.senha,
