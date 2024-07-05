@@ -14,4 +14,5 @@ export interface IUser{
   email: string
   senha: string
   favpokemons?: string[]
+  picture?: File | null
 }

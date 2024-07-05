@@ -12,8 +12,8 @@ import { Container, LoginContainer, TitleContainer, Row, FormContainer, Footer }
 import Input from "../../components/input/index.tsx";
 import Button from "../../components/button/index.tsx";
 //Tipos
-import { IUser, ILoginData } from "./type.ts";
-import { IAPI } from "../../type.ts";
+import { ILoginData } from "./type.ts"; 
+import Icone from "../../assets/images/logofodastica.png"
 
 const schema = yup.object({
   email: yup.string().email("Email não é valido").required('Campo Obrigatório'),
@@ -61,7 +61,7 @@ const Login = () => {
     <Container>
       <img src={image} alt="pokemon" title={pokemonName} width={400} id="pokemon" />
       <LoginContainer>
-        <img src="https://media.discordapp.net/attachments/1230526550969942067/1255246736637825094/logofodastica.png?ex=667c6f1f&is=667b1d9f&hm=e2b960fe390ef3649faa5adbcf7e6790480f9ddba8cb01fb55e2a1c0244ea459&=&format=webp&quality=lossless&width=528&height=256" alt="icon" width={300} />
+        <img src={Icone} alt="icon" width={300} />
         <Row>
           <TitleContainer>
             <p>Login</p>
