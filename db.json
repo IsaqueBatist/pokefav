@@ -7,11 +7,10 @@
       "senha": "123456",
       "favpokemons": [
         "ivysaur",
+        "venusaur",
         "charmander",
         "charmeleon",
-        "charizard",
-        "squirtle",
-        "wartortle"
+        "caterpie"
       ]
     },
     {
@@ -33,13 +32,11 @@
       "email": "bia@gmail.com",
       "senha": "123456",
       "favpokemons": [
-        "ivysaur",
-        "venusaur",
-        "sandshrew",
         "charmander",
         "charmeleon",
-        "blastoise",
-        "wartortle"
+        "venusaur",
+        "ivysaur",
+        "bulbasaur"
       ]
     }
   ]

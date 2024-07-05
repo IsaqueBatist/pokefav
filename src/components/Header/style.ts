@@ -16,9 +16,14 @@ export const NavbarContainer = styled.div`
   justify-self: center;
   align-self: center;
 
-  p{
+  .lik{
     margin-left: 1rem;
     font-size: 2rem;
     font-weight: 700;
+    text-decoration: none;
+
+    &:visited {
+      color: white;
+    }
   }
 `

@@ -30,7 +30,7 @@ const HomePage = () => {
       console.error(error);
     }
   }
-  const getPokemonDetails = async (pokemonName: string) => {
+   const getPokemonDetails = async (pokemonName: string) => {
     try {
       const response = await api.get(`/api/v2/pokemon/${pokemonName}`)
       const poke: IHead = response.data
@@ -50,37 +50,57 @@ const HomePage = () => {
   const loadMorePokemons = () => {
     loadPokemons(offset)
   }
-  const getfavPokemons = useCallback(async (pokemon, checked: boolean) => {
+  const getfavPokemons = useCallback(async (pokemon, checked) => {
     if (checked) {
-      setFavPokemons(prevFav => [...prevFav, pokemon.name])
-
-      await db.put(`/users/${user.id}`, {
-        ...user,
-        favpokemons: [...favPokemons, pokemon.name]
-      })
+      setFavPokemons(prevFav => {
+        const updatedFavs = [...prevFav, pokemon.name];
+        db.put(`/users/${user.id}`, {
+          ...user,
+          favpokemons: updatedFavs
+        });
+  
+        localStorage.setItem('userInfo', JSON.stringify({
+          ...user,
+          favpokemons: updatedFavs
+        }));
+  
+        setUser({
+          ...user,
+          favpokemons: updatedFavs
+        });
+  
+        return updatedFavs;
+      });
     } else {
-      setFavPokemons(prevFav => prevFav.filter(fav => fav !== pokemon.name))
-      await db.put(`/users/${user.id}`, {
-        ...user,
-        favpokemons: favPokemons.filter(fav => fav !== pokemon.name)
-      })
-    }
-    setUser({
-      ...user,
-      favpokemons: [...favPokemons, pokemon.name]
-    })
-    localStorage.setItem('userInfo', JSON.stringify({
-      ...user,
-      favpokemons: [...favPokemons, pokemon.name]
-    }))
-  }, [favPokemons, user])
+      setFavPokemons(prevFav => {
+        const updatedFavs = prevFav.filter(fav => fav !== pokemon.name);
 
+        db.put(`/users/${user.id}`, {
+          ...user,
+          favpokemons: updatedFavs
+        });
+
+        localStorage.setItem('userInfo', JSON.stringify({
+          ...user,
+          favpokemons: updatedFavs
+        }));
+
+        setUser({
+          ...user,
+          favpokemons: updatedFavs
+        });
+  
+        return updatedFavs;
+      });
+    }
+  }, [user]);
+  
 
 
   useEffect(() => {
     const getDATA = async () => {
       const userInfo = localStorage.getItem('userInfo')
-      if(userInfo){
+      if (userInfo) {
         try {
           const data: IUser = JSON.parse(userInfo)
           setUser(data)
@@ -93,10 +113,6 @@ const HomePage = () => {
     getDATA()
     loadPokemons()
   }, [])
-  useEffect(() => {
-    console.log(`User setado na inicialização:`)
-    console.log(user)
-  }, [user])
   return (
     <>
       <Header />
