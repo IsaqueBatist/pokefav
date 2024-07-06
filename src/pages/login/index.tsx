@@ -12,7 +12,7 @@ import { Container, LoginContainer, TitleContainer, Row, FormContainer, Footer }
 import Input from "../../components/input/index.tsx";
 import Button from "../../components/button/index.tsx";
 //Tipos
-import { ILoginData } from "./type.ts"; 
+import { ILoginData } from "./type.ts";
 import Icone from "../../assets/images/logofodastica.png"
 
 const schema = yup.object({

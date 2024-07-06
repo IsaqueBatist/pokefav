@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { ContainerTypeProps } from "./type";
 
-export const getColor = (tipo:string) => {
-  switch(tipo){
+export const getColor = (tipo: string) => {
+  switch (tipo) {
     case 'grass':
       return '#63BB5B'
     case 'poison':
@@ -47,7 +47,7 @@ export const ContainerType = styled.div<ContainerTypeProps>`
   align-items: center;
   width: 9rem;
   height: 2.5rem;
-  background-color: ${({tipo}) => getColor(tipo)};
+  background-color: ${({ tipo }) => getColor(tipo)};
   border-radius: 1rem;
   color: white;
   margin: .2rem 0 0 .2rem;

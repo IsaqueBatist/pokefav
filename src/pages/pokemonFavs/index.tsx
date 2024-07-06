@@ -120,7 +120,8 @@ export const PokemonFavs = () => {
               </PokemonCardContainer>
             )
           })
-        : null}
+        : ''}
+
       </PokemonsContainer>
     </>
   )

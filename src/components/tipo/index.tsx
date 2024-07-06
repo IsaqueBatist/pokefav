@@ -2,7 +2,7 @@ import React from "react";
 import { ContainerType } from "./style.ts";
 
 
-const Type = ({tipo}) => {
+const Type = ({ tipo }) => {
 
   return (
     <ContainerType tipo={tipo}>

@@ -28,11 +28,11 @@ export const PokemonCardContainer = styled.div`
 export const PokemonImageContainer = styled.div<ContainerTypeProps>`
   display:flex;
   flex-direction: column;
-  background-color: ${({tipo}) => getColor(tipo)};
+  background-color: ${({ tipo }) => getColor(tipo)};
   align-items: center;
   width: 100%;
   height: 70%;
-  background-image: url("${({image}) => image}");
+  background-image: url("${({ image }) => image}");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;

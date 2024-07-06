@@ -9,7 +9,6 @@ import {
   bug, dark, dragon, electric, fairy, fighting, fire, flying, ground, ghost, grass, ice, normal, poison, psychic, rock, steel, water,
 } from "../../imagens.ts"
 import { IUser } from "../login/type.ts";
-import { userInfo } from "os";
 
 
 const HomePage = () => {
@@ -30,7 +29,7 @@ const HomePage = () => {
       console.error(error);
     }
   }
-   const getPokemonDetails = async (pokemonName: string) => {
+  const getPokemonDetails = async (pokemonName: string) => {
     try {
       const response = await api.get(`/api/v2/pokemon/${pokemonName}`)
       const poke: IHead = response.data
@@ -58,17 +57,17 @@ const HomePage = () => {
           ...user,
           favpokemons: updatedFavs
         });
-  
+
         localStorage.setItem('userInfo', JSON.stringify({
           ...user,
           favpokemons: updatedFavs
         }));
-  
+
         setUser({
           ...user,
           favpokemons: updatedFavs
         });
-  
+
         return updatedFavs;
       });
     } else {
@@ -89,12 +88,12 @@ const HomePage = () => {
           ...user,
           favpokemons: updatedFavs
         });
-  
+
         return updatedFavs;
       });
     }
   }, [user]);
-  
+
 
 
   useEffect(() => {

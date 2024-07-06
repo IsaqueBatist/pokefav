@@ -12,12 +12,12 @@ const Input = ({ label, id, placeholder, type, required, name, control, errorMes
           control={control}
           render={({ field: { onChange, onBlur, value, ref } }) => (
             <>
-              {label ? <label htmlFor={id}>{label}{required? " *" : null}</label> : null}
+              {label ? <label htmlFor={id}>{label}{required ? " *" : null}</label> : null}
               <InputText {...rest} onChange={onChange} onBlur={onBlur} value={value} ref={ref} type={type} />
             </>
           )}
         />
-      {errorMessage ? <ErrorText>{errorMessage}</ErrorText> : null}
+        {errorMessage ? <ErrorText>{errorMessage}</ErrorText> : null}
       </InputContainer>
     </>
   )

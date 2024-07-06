@@ -1,5 +1,5 @@
 import { Control } from "react-hook-form"
-export interface Iinput extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>{
+export interface Iinput extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
   label: string
   id: string
   control: Control<any, any>

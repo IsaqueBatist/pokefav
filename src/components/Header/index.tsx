@@ -15,11 +15,11 @@ const Header = () => {
 
   useEffect(() => {
     const userInfo = localStorage.getItem('userInfo')
-    if(userInfo){
-      try{
-          const parseUserInfo = JSON.parse(userInfo)
-          setUser(parseUserInfo)
-      }catch (error){
+    if (userInfo) {
+      try {
+        const parseUserInfo = JSON.parse(userInfo)
+        setUser(parseUserInfo)
+      } catch (error) {
         console.error(error)
       }
     }
@@ -31,7 +31,7 @@ const Header = () => {
         <Link className="lik" to="/home">Home</Link>
         <Link className="lik" to="/fav">Favoritos</Link>
       </NavbarContainer>
-      <UserInfo  email={user.email} id={user.id} name={user.nome} />
+      <UserInfo email={user.email} id={user.id} name={user.nome} />
     </HeaderContainer>
   )
 }

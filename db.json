@@ -7,10 +7,19 @@
       "senha": "123456",
       "favpokemons": [
         "ivysaur",
-        "venusaur",
-        "charmander",
         "charmeleon",
-        "caterpie"
+        "caterpie",
+        "bulbasaur",
+        "wartortle",
+        "squirtle",
+        "jigglypuff",
+        "ninetales",
+        "sandshrew",
+        "persian",
+        "psyduck",
+        "alakazam",
+        "venusaur",
+        "charmander"
       ]
     },
     {
@@ -18,13 +27,7 @@
       "nome": "isaque",
       "email": "isaque@gmail.com",
       "senha": "123456",
-      "favpokemons": [
-        "ivysaur",
-        "caterpie",
-        "bulbasaur",
-        "venusaur",
-        "charmander"
-      ]
+      "favpokemons": []
     },
     {
       "id": "3",

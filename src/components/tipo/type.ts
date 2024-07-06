@@ -1,4 +1,4 @@
-export interface ContainerTypeProps{
+export interface ContainerTypeProps {
   tipo: string
-  image: string
+  image?: string
 }
